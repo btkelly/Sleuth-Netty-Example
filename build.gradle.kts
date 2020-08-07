@@ -25,6 +25,12 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
+
+	val logBookVersion = "2.1.4"
+	implementation("org.zalando:logbook-core:$logBookVersion")
+	implementation("org.zalando:logbook-json:$logBookVersion")
+	implementation("org.zalando:logbook-netty:$logBookVersion")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
