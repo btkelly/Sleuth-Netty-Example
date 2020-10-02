@@ -41,9 +41,9 @@ class LoggingConfiguration {
     @ConditionalOnClass(NettyServerCustomizer::class)
     fun nettyServerCustomizer(logbook: Logbook, braveHttpServerTracing: BraveHttpServerTracing): NettyServerCustomizer =
         NettyServerCustomizer { httpServer ->
-            httpServer.observe(braveHttpServerTracing)
-            httpServer.doOnConnection {
-                it.addHandlerLast(LogbookServerHandler(logbook))
-            }
+            httpServer.childObserve(braveHttpServerTracing)
+                .doOnConnection {
+                    it.addHandlerLast(LogbookServerHandler(logbook))
+                }
         }
 }
